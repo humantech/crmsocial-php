@@ -1,11 +1,11 @@
-<?php namespace CRMSocial\Operation;
+<?php namespace Rluders\CRMSocial\Operation;
 
-use CRMSocial\Operation\OperationAbstract as Base;
-
-class GetCities extends Base
+class GetCities extends OperationAbstract
 {
 
-	public function valdiate($data)
+	protected $operation = 'get_cities';
+
+	public function validate($data = null)
 	{
 
 		return (isset($data['state']) && !empty($data['state']));

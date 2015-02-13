@@ -1,9 +1,9 @@
-<?php namespace CRMSocial\Operation;
+<?php namespace Rluders\CRMSocial\Operation;
 
-use CRMSocial\Operation\OperationAbstract as Base;
-
-class GetStates extends Base
+class GetStates extends OperationAbstract
 {
+
+	protected $operation = 'get_states';
 
 	public function validate($data = null)
 	{

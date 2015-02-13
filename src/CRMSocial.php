@@ -1,6 +1,6 @@
-<?php namespace CRMSocial;
+<?php namespace Rluders\CRMSocial;
 
-use CRMSocial\Operation\OperationAbstract as Base;
+use Rluders\CRMSocial\Operation\OperationAbstract as Base;
 
 class CRMSocial
 {
@@ -12,7 +12,7 @@ class CRMSocial
 	public function __construct($api)
 	{
 
-		if (!filter_var(FILTER_VALIDATE_URL)) {
+		if (!filter_var($api, FILTER_VALIDATE_URL)) {
 
 			throw new Exception('Invalid CRMSocial API address.');
 			
@@ -33,35 +33,39 @@ class CRMSocial
 	{
 
 		$array = explode('_', $operation);
-		
-		return array_map(function($str) {
 
-			return ucfirst($str)
+		$class = implode(array_map(function($str) {
 
-		}, $array);
+			return ucfirst($str);
+
+		}, $array));
+
+		return "Rluders\\CRMSocial\\Operation\\$class";
 
 	}
 
-	public function send($operation, $data = array());
+	public function send($operation, $data = array())
 	{
 
-		$class = $this->getClassName($operation);
-		$object = new \CRMSocial\Operation\$class;
+		$return = null;
+
+		$class = $this->getClassName($operation);		
+		$object = new $class;
 
 		if (!$object instanceof Base) {
 
-			throw new Exception('Invalid operation object.');
+			throw new \Exception('Invalid operation object.');
 
 		}
 
 		$validate = $object->validate($data);
-		if (!is_array($validate)) {
+		if (!is_array($validate) && $validate === true) {
 
 			try {
 				
-				$object->send($data);
+				$return = $object->send($this->api, $data);
 
-			} catch (Exception $e) {
+			} catch (\Exception $e) {
 
 				$this->error[] = $e->getMessage();
 
@@ -73,7 +77,7 @@ class CRMSocial
 
 		}
 
-		return ($this->error == null);
+		return $this->error !== null ? $return : false;
 
 	}
 

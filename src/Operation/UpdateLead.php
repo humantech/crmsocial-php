@@ -1,14 +1,16 @@
-<?php namespace CRMSocial\Operation;
+<?php namespace Rluders\CRMSocial\Operation;
 
-use CRMSocial\Operation\OperationAbstract as Base;
 
-class UpdateLead extends Base
+
+class UpdateLead extends OperationAbstract
 {
 	
-	public function validate($data)
+	protected $operation = 'update_lead';
+
+	public function validate($data = null)
 	{
 
-		return GUMP::is_valid($data, array(
+		return \GUMP::is_valid($data, array(
 			'page'        => 'required',
 			'email'       => 'required',
 			'name'        => 'required',
