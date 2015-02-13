@@ -1,0 +1,13 @@
+{
+    "name": "humantech/crmsocial-php",
+    "description": "CRMSocial PHP Library",
+    "authors": [
+        {
+            "name": "Ricardo Lüders",
+            "email": "ricardo.luders@humantech.com.br"
+        }
+    ],
+    "require": {
+
+    }
+}
