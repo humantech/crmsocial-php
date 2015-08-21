@@ -1,15 +1,13 @@
-<?php namespace Rluders\CRMSocial\Operation;
+<?php
 
-class GetStates extends OperationAbstract
+namespace Rluders\CRMSocial\Operation;
+
+class GetStates extends AbstractOperation
 {
+    protected $operation = 'get_states';
 
-	protected $operation = 'get_states';
-
-	public function validate($data = null)
-	{
-
-		return empty($data);
-
-	}
-
+    public function validate($data = null)
+    {
+        return empty($data);
+    }
 }

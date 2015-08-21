@@ -1,26 +1,26 @@
-<?php namespace Rluders\CRMSocial\Operation;
+<?php
 
+namespace Rluders\CRMSocial\Operation;
 
-
-class UpdateLead extends OperationAbstract
+class UpdateLead extends AbstractOperation
 {
-	
-	protected $operation = 'update_lead';
+    protected $operation = 'update_lead';
 
-	public function validate($data = null)
-	{
+    public function validate($data = null)
+    {
+        $gump = new \GUMP();
 
-		return \GUMP::is_valid($data, array(
-			'page'        => 'required',
-			'email'       => 'required',
-			'name'        => 'required',
-			'phone'       => 'required',
-			'city_id'     => 'required',
-			'state_id'    => 'required',
-			'message'     => 'required',
-			'destination' => 'required'
-		));
+        $gump->validation_rules([
+            'page' => 'required',
+            'email' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'city_id' => 'required',
+            'state_id' => 'required',
+            'message' => 'required',
+            'destination' => 'required',
+        ]);
 
-	}
-
+        return $gump->run($data);
+    }
 }
