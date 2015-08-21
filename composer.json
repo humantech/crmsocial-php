@@ -2,7 +2,7 @@
     "name": "rluders/crmsocial-php",
     "description": "CRMSocial Library for PHP",
     "require": {
-        "php": ">=5.3",
+        "php": ">=5.4",
         "wixel/gump": "dev-master"
     },
     "autoload": {
