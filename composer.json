@@ -1,6 +1,15 @@
 {
     "name": "rluders/crmsocial-php",
     "description": "CRMSocial Library for PHP",
+    "keywords": ["crmsocial", "humantech", "library"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ricardo Lüders",
+            "email": "ricardo@luders.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4",
         "wixel/gump": "dev-master"
@@ -13,13 +22,5 @@
     "require-dev": {
         "phpunit/phpunit": "~4.5@dev",
         "guzzle/guzzle": "3.9.*@dev"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Ricardo Lüders",
-            "email": "ricardo@luders.com.br"
-        }
-    ],
-    "minimum-stability": "dev"
+    }
 }
