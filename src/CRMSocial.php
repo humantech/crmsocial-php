@@ -12,7 +12,7 @@ class CRMSocial
     public function __construct($api)
     {
         if (!filter_var($api, FILTER_VALIDATE_URL)) {
-            throw new Exception('Invalid CRMSocial API address.');
+            throw new \Exception('Invalid CRMSocial API address.');
         }
 
         $this->api = $api;
